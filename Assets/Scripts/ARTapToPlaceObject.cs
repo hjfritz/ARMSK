@@ -9,6 +9,8 @@ using UnityEngine.XR.ARSubsystems;
 [RequireComponent(typeof(ARRaycastManager))]
 public class ARTapToPlaceObject : MonoBehaviour
 {
+    [SerializeField] private Transform _player;
+    
     public GameObject gameObjectToInstantiate;
 
     private GameObject spawnedObject;
@@ -54,6 +56,8 @@ public class ARTapToPlaceObject : MonoBehaviour
             {
                 spawnedObject.transform.position = hitPose.position;
             }
+            
+            spawnedObject.transform.LookAt(_player);
         }
     }
 }
