@@ -949,8 +949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aac83d4cdcf2d2419ec72749277c8ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _arCamera: {fileID: 0}
-  UI: {fileID: 0}
+  _arCamera: {fileID: 1940999025}
+  UI: {fileID: 308772470}
   blockHeight: 600
   gameObjectToInstantiate: {fileID: 1107155390}
 --- !u!1 &519307138
