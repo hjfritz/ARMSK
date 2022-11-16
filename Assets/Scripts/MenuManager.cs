@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject shoulderMenu;
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class MenuManager : MonoBehaviour
     public void StartShoulderExam()
     {
         menu.SetActive(false);
+        shoulderMenu.SetActive(true);
     }
 
     public void ExitGame()
