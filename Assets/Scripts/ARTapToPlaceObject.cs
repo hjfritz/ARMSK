@@ -16,6 +16,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     private GameObject spawnedObject;
     private ARRaycastManager _arRaycastManager;
     private Vector2 touchPosition;
+    private Vector3 bodyDirection;
 
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
@@ -57,7 +58,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 spawnedObject.transform.position = hitPose.position;
             }
             
-            spawnedObject.transform.LookAt(_player);
+            spawnedObject.transform.LookAt(new Vector3(_player.position.x, spawnedObject.transform.position.y, _player.position.z));
         }
     }
 }
