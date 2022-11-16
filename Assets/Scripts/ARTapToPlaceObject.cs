@@ -49,14 +49,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         {
             var hitPose = hits[0].pose;
 
-            if (spawnedObject == null)
-            {
-                spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
-            }
-            else
-            {
-                spawnedObject.transform.position = hitPose.position;
-            }
+            spawnedObject.transform.position = hitPose.position;
             
             spawnedObject.transform.LookAt(new Vector3(_player.position.x, spawnedObject.transform.position.y, _player.position.z));
         }
