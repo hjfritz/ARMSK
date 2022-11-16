@@ -11,6 +11,8 @@ public class ARTapToPlaceObject : MonoBehaviour
 {
     [SerializeField] private Transform _arCamera;
     [SerializeField] private GameObject UI;
+
+    [SerializeField] private int blockHeight;
     
     public GameObject gameObjectToInstantiate;
 
@@ -32,7 +34,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            if (Input.GetTouch(0).position.y > -1800)
+            if (Input.GetTouch(0).position.y > blockHeight)
             {
                 touchPosition = Input.GetTouch(0).position;
                 return true;
