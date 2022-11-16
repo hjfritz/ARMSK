@@ -32,7 +32,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            if (Input.GetTouch(0).position.y > 1800)
+            if (Input.GetTouch(0).position.y > -1800)
             {
                 touchPosition = Input.GetTouch(0).position;
                 return true;
