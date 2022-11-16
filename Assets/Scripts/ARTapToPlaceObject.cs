@@ -9,7 +9,7 @@ using UnityEngine.XR.ARSubsystems;
 [RequireComponent(typeof(ARRaycastManager))]
 public class ARTapToPlaceObject : MonoBehaviour
 {
-    [SerializeField] private Transform _player;
+    [SerializeField] private Transform _arCamera;
     
     public GameObject gameObjectToInstantiate;
 
@@ -52,7 +52,7 @@ public class ARTapToPlaceObject : MonoBehaviour
 
             spawnedObject.transform.position = hitPose.position;
             
-            spawnedObject.transform.LookAt(new Vector3(_player.position.x, spawnedObject.transform.position.y, _player.position.z));
+            spawnedObject.transform.LookAt(new Vector3(_arCamera.position.x, spawnedObject.transform.position.y, _arCamera.position.z));
         }
     }
 }
