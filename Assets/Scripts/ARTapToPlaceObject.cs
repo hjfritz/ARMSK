@@ -10,6 +10,7 @@ using UnityEngine.XR.ARSubsystems;
 public class ARTapToPlaceObject : MonoBehaviour
 {
     [SerializeField] private Transform _arCamera;
+    [SerializeField] private GameObject UI;
     
     public GameObject gameObjectToInstantiate;
 
@@ -17,6 +18,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     private ARRaycastManager _arRaycastManager;
     private Vector2 touchPosition;
     private Vector3 bodyDirection;
+    private bool touchable = true;
 
     private static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
@@ -30,8 +32,11 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            touchPosition = Input.GetTouch(0).position;
-            return true;
+            if (Input.GetTouch(0).position.y > 1800)
+            {
+                touchPosition = Input.GetTouch(0).position;
+                return true;
+            }
         }
 
         touchPosition = default;
@@ -48,11 +53,14 @@ public class ARTapToPlaceObject : MonoBehaviour
 
         if (_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
-            var hitPose = hits[0].pose;
+            if (touchable)
+            {
+                var hitPose = hits[0].pose;
 
-            spawnedObject.transform.position = hitPose.position;
+                spawnedObject.transform.position = hitPose.position;
             
-            spawnedObject.transform.LookAt(new Vector3(_arCamera.position.x, spawnedObject.transform.position.y, _arCamera.position.z));
+                spawnedObject.transform.LookAt(new Vector3(_arCamera.position.x, spawnedObject.transform.position.y, _arCamera.position.z));
+            }
         }
     }
 }
