@@ -26,7 +26,7 @@ public class AnimationManager : MonoBehaviour
 
     public void NextStep()
     {
-        if (step >= 1 && step <= 4)
+        if (step >= 1 && step <= 3)
         {
             step++;
             _animator.SetInteger("Step", step);
@@ -52,8 +52,28 @@ public class AnimationManager : MonoBehaviour
 
     public void BackStep()
     {
-        step--;
-        _animator.SetInteger("Step", step);
+        if (step >= 2 && step <= 4)
+        {
+            step--;
+            _animator.SetInteger("Step", step);
+            if (step == 1)
+            {
+                DeactivateMenus();
+                step1Menu.SetActive(true);
+            }else if (step == 2)
+            {
+                DeactivateMenus();
+                step2Menu.SetActive(true);
+            }else if (step == 3)
+            {
+                DeactivateMenus();
+                step3Menu.SetActive(true);
+            }else if (step == 4)
+            {
+                DeactivateMenus();
+                step4Menu.SetActive(true);
+            }
+        }
     }
 
     private void DeactivateMenus()
